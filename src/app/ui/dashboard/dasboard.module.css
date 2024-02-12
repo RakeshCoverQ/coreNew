@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+}
+
+.menu {
+    flex: 1;
+    background: var(--bgSoft);
+    padding: 20px;
+}
+
+.content {
+    flex: 4;
+    /* padding: 20px; */
+}
+.childrenContent{
+    padding: 20px;
+}

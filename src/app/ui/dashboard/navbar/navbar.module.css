@@ -1,0 +1,50 @@
+.container {
+    background: var(--bgSoft);
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    position: sticky;
+    top:0px;
+    z-index: 100;
+}
+
+.itemContainer {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.userImageContainer {
+    background: var(--bg);
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    padding: 10px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profilePopOverContainer{
+    width: 10vw;
+}
+.profilePopOverItemContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:flex-start;
+    margin-bottom: 1vh;
+    
+}
+.profilePopOverItemContainer:hover{
+    /* background: #2e374a; */
+    cursor: pointer
+}
+.profilePopOverItemIconContainer{
+    margin-right: 1vw;
+}
+.profilePopOverItemIcon{}
+.profilePopOverItemNameContainer{}
+.profilePopOverItemName{}

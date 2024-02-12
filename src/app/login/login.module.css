@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensure the container takes the full height of the viewport */
+    /* border: 1px solid wheat; */
+  }
+.content{
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    border: 1px solid wheat;
+    padding: 30px;
+    border-radius: 10px;
+}
+  

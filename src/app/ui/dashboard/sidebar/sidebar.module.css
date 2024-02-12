@@ -1,0 +1,13 @@
+.container{
+    position: sticky;
+    top:40px;
+}
+.imageContainer{
+
+}
+.image{
+    object-fit: contain;
+}
+.list{
+    list-style: none;
+}
