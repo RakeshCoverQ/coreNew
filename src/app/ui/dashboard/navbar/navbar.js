@@ -6,11 +6,13 @@ import { IoIosNotifications } from "react-icons/io";
 import { RiEnglishInput } from "react-icons/ri";
 import { TbWorld } from "react-icons/tb";
 import { MdLogout } from "react-icons/md";
+import { useSelector } from "react-redux"
 
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
+  const userData = useSelector(state => state?.userInfo?.userData)
   const router = useRouter()
   const languageIconContainer = {
     width: 30,
@@ -45,7 +47,7 @@ export default function Navbar() {
         <span className={styles.profilePopOverItemIconContainer}>
           <FaUser />
         </span>
-        <h3 className={styles.profilePopOverItemName}>Profile</h3>
+        <h4 className={styles.profilePopOverItemName}>{userData?.USER_NAME}</h4>
       </div>
       <div
         onClick={handleLogOutClick}
