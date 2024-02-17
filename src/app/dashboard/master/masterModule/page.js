@@ -3,6 +3,7 @@ import React from 'react'
 import { useSelector } from "react-redux"
 import styles from './masterModules.module.css'
 import { useRouter } from 'next/navigation';
+import { IsEmpty } from '../../../../utility/handler';
 
 
 export default function MasterModules() {
@@ -17,14 +18,19 @@ export default function MasterModules() {
     return (
         <>
             <div className={styles.container}>
-                {List[0]?.M1?.map(item => {
-                    return (
-                        <div onClick={() => handleClick(item)} className={styles.CardContainer}>
-                            <p>{item.MODULE_NAME}</p>
-                        </div>
-                    )
-                })}
-            </div>  
+                {!IsEmpty(List) &&
+                    <>
+
+                        {List[0]?.M1?.map(item => {
+                            return (
+                                <div onClick={() => handleClick(item)} className={styles.CardContainer}>
+                                    <p>{item.MODULE_NAME}</p>
+                                </div>
+                            )
+                        })}
+                    </>
+                }
+            </div>
         </>
     )
 }

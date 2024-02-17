@@ -40,3 +40,9 @@ export const encryptData = (Data) => {
     const encrypted = AES.encrypt(JSON.stringify(Data), encryptionKey, { initializationVector });
     return encrypted
 }
+export const IsEmpty = value =>
+    value === undefined ||
+    value === false ||
+    value === null ||
+    (typeof value === 'object' && Object.keys(value).length === 0) ||
+    (typeof value === 'string' && value.trim().length === 0);
