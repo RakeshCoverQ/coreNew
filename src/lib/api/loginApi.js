@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 // Define a custom fetchBaseQuery function with prepareHeaders
 const baseQueryWithHeaders = fetchBaseQuery({
-  baseUrl: 'https://valaria.globalcognito.com/cbaNewEncrypt/cbaNew/v1/',
+  baseUrl: 'https://garance.tangerine.insure/cbaNewEncrypt/cbaNew/v1/',
   prepareHeaders: (headers, { getState }) => {
     headers.set('SessionId', 'ABCD');
     headers.set('Content-Type', 'application/json');
