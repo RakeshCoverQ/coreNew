@@ -8,7 +8,9 @@ export default function MasterModuleSubChildList() {
     const searchParams = useSearchParams()
     const data = JSON.parse(searchParams.get('data'));
     const handleClick = (ObjectData) => {
+
         console.log('ObjectData',ObjectData);
+        router.push(`/dashboard/master/masterModule/masterModuleChildList/masterModuleSubChildList/masterModuleSubChildDetail?data=${JSON.stringify(ObjectData)}`)
     }
     return (
         <div className={styles.container}>

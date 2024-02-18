@@ -1,4 +1,5 @@
 import { AES, enc } from 'crypto-js';
+import AesUtil from './AesUtil';
 
 export const getDeviceType = () => {
     if (typeof window === 'undefined') {
@@ -35,8 +36,8 @@ export const encryptData = (Data) => {
     const iv = "1b554da30e64f609"
     const encryptionKey = enc.Utf8.parse(key);
     const initializationVector = enc.Utf8.parse(iv);
-    console.log("encryptionKey",encryptionKey);
-    console.log("initializationVector",initializationVector);
+    console.log("encryptionKey", encryptionKey);
+    console.log("initializationVector", initializationVector);
     const encrypted = AES.encrypt(JSON.stringify(Data), encryptionKey, { initializationVector });
     return encrypted
 }
@@ -46,3 +47,8 @@ export const IsEmpty = value =>
     value === null ||
     (typeof value === 'object' && Object.keys(value).length === 0) ||
     (typeof value === 'string' && value.trim().length === 0);
+
+export const AesCipher = new AesUtil({
+    key: "859aa1127c96a7da",
+    iv: "1b554da30e64f609",
+});

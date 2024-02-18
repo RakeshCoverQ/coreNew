@@ -12,6 +12,9 @@ export default function MasterModuleChildList() {
             
             router.push(`/dashboard/master/masterModule/masterModuleChildList/masterModuleSubChildList?data=${JSON.stringify(ObjectData)}`)
         }
+        else{
+            router.push(`/dashboard/master/masterModule/masterModuleChildList/masterModuleSubChildList/masterModuleSubChildDetail?data=${JSON.stringify(ObjectData)}`)
+        }
     }
     return (
         <div className={styles.container}>
