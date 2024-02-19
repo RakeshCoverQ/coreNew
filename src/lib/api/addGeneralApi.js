@@ -2,17 +2,14 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { baseQueryWithCustomHeaders } from '../baseQuery';
 import { AesCipher, IsEmpty } from '../../utility/handler';
 
-export const masterSubChildDataApi = createApi({
-    reducerPath: 'masterSubChildDataApi',
+export const addGeneralApi = createApi({
+    reducerPath: 'addGeneralApi',
     baseQuery: baseQueryWithCustomHeaders(),
     endpoints: (builder) => ({
-        getMasterSubChildData: builder.mutation({
-            query: ({encryptData,SessionType}) => ({
-                url: `cbaNewEncrypt/cbaNew/v1/getAllMasterCodesPagination`,
+        addState: builder.mutation({
+            query: ({encryptData}) => ({
+                url: `cbaNewEncrypt/cbaNew/v1/insertGeneralCode`,
                 method: 'POST',
-                headers: {
-                    ServiceType: SessionType,
-                },
                 body: {encryptData},
             }),
             transformResponse: (response) => {
@@ -27,4 +24,4 @@ export const masterSubChildDataApi = createApi({
     }),
 });
 
-export const { useGetMasterSubChildDataMutation } = masterSubChildDataApi
+export const { useAddStateMutation } = addGeneralApi

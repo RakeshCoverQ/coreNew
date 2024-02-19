@@ -31,7 +31,7 @@ export default function MasterModuleSubChildDetail() {
       let payload = {
         "fromDate": "",
         "toDate": "",
-        "pageCount": 100,
+        "pageCount": 10000,
         "pageNumber": 1,
         "isSearch": false,
         "columnName": "",
@@ -45,11 +45,11 @@ export default function MasterModuleSubChildDetail() {
     }
   }
   useEffect(() => {
-    console.log("hhdsavjhvbjfs",JSON.stringify(Data));
+    console.log("hhdsavjhvbjfs", JSON.stringify(Data));
     if (!IsEmpty(data)) {
       handleFetchMasterSubChildData()
     }
-  }, [])
+  }, [open])
   const createColumn = (value) => {
     const columns = [
       {
@@ -82,6 +82,7 @@ export default function MasterModuleSubChildDetail() {
             <Button
               type="primary"
               onClick={() => {
+                console.log(data?.MODULE_NAME)
                 setOpen(true);
               }}
               shape="circle"
@@ -94,13 +95,128 @@ export default function MasterModuleSubChildDetail() {
               columns={createColumn(MasterSubChildData?.data?.data?.DATA)}
             />
           </div>
-          <Forms.AddStateForm
-            open={open}
-            onCreate={onCreate}
-            onCancel={() => {
-              setOpen(false);
-            }}
-          />
+          {data?.MODULE_NAME === "State" && (
+            <>
+              <Forms.AddStateForm
+                open={open}
+                onCreate={onCreate}
+                onCancel={() => {
+                  setOpen(false);
+                }}
+              />
+            </>
+          )}
+          {data?.MODULE_NAME === "City" && (
+            <>
+              <Forms.AddCityForm
+                open={open}
+                onCreate={onCreate}
+                onCancel={() => {
+                  setOpen(false);
+                }}
+              />
+            </>
+          )}
+          {data?.MODULE_NAME === "Gender Master" && (
+            <>
+              <Forms.AddGender
+                open={open}
+                onCreate={onCreate}
+                onCancel={() => {
+                  setOpen(false);
+                }}
+              />
+            </>
+          )}
+          {data?.MODULE_NAME === "Cause Of Loss" && (
+            <>
+              <Forms.AddCauseOfLoss
+                open={open}
+                onCreate={onCreate}
+                onCancel={() => {
+                  setOpen(false);
+                }}
+              />
+            </>
+          )}
+          {data?.MODULE_NAME === "List of Nature of Loss" && (
+            <>
+              <Forms.AddNatureOfLoss
+                open={open}
+                onCreate={onCreate}
+                onCancel={() => {
+                  setOpen(false);
+                }}
+              />
+            </>
+          )}
+          {data?.MODULE_NAME === "List of Banks" && (
+            <>
+              <Forms.AddBank
+                open={open}
+                onCreate={onCreate}
+                onCancel={() => {
+                  setOpen(false);
+                }}
+              />
+            </>
+          )}
+          {data?.MODULE_NAME === "List of Professions" && (
+            <>
+              <Forms.AddProfession
+                open={open}
+                onCreate={onCreate}
+                onCancel={() => {
+                  setOpen(false);
+                }}
+              />
+            </>
+          )}
+          {data?.MODULE_NAME === "Nationality" && (
+            <>
+              <Forms.AddNationality
+                open={open}
+                onCreate={onCreate}
+                onCancel={() => {
+                  setOpen(false);
+                }}
+              />
+            </>
+          )}
+          {data?.MODULE_NAME === "Vehicle Make" && (
+            <>
+              <Forms.AddVehicleMake
+                open={open}
+                onCreate={onCreate}
+                onCancel={() => {
+                  setOpen(false);
+                }}
+              />
+            </>
+          )}
+          {data?.MODULE_NAME === "Vehicle Model" && (
+            <>
+              <Forms.AddVehicleModel
+                open={open}
+                onCreate={onCreate}
+                onCancel={() => {
+                  setOpen(false);
+                }}
+              />
+            </>
+          )}
+          {data?.MODULE_NAME === "Vehicle Type" && (
+            <>
+              <Forms.AddVehicleType
+                open={open}
+                onCreate={onCreate}
+                onCancel={() => {
+                  setOpen(false);
+                }}
+              />
+            </>
+          )}
+
         </>
       )}
     </div>

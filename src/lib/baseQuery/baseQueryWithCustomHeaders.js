@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IsEmpty } from '../../utility/handler';
 
 export const baseQueryWithCustomHeaders = (customHeaders) => fetchBaseQuery({
-    baseUrl: 'https://garance.tangerine.insure/cbaNewEncrypt/cbaNew/v1/',
+    baseUrl: 'https://garance.tangerine.insure/',
     prepareHeaders: (headers, { getState }) => {
       const {userInfo} = getState()
       headers.set('Content-Type', 'application/json');

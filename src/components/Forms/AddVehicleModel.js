@@ -5,7 +5,7 @@ import { useGetMasterSubChildDataMutation } from '../../lib/api/masterSubChildDa
 import { AesCipher, IsEmpty } from '../../utility/handler';
 import { useAddStateMutation } from '../../lib/api/addGeneralApi';
 
-export const AddStateForm = ({ open, onCreate, onCancel }) => {
+export const AddVehicleModel = ({ open, onCreate, onCancel }) => {
     const [FetchMasterSubChildData, MasterSubChildData] = useGetMasterSubChildDataMutation()
     const [AddState] = useAddStateMutation()
     const [form] = Form.useForm();
@@ -20,25 +20,25 @@ export const AddStateForm = ({ open, onCreate, onCancel }) => {
             "value": ""
         }
         const encryptedData = AesCipher.encrypt(JSON.stringify(payload));
-        FetchMasterSubChildData({ encryptData: encryptedData, SessionType: "Country" })
+        FetchMasterSubChildData({ encryptData: encryptedData, SessionType: "Vehicle Make" })
 
     }
     const handleAddState = async (value) => {
-        let { StateName, countryCode } = value
+        let { VehicleModel, makeCode } = value
         let payload = {
-            "countryCode": countryCode,
+            "countryCode": null,
             "stateCode": null,
             "bankCode": null,
-            "makeCode": null,
+            "makeCode": makeCode,
             "id": null,
-            "serviceType": "State",
-            "description": StateName
+            "serviceType": "Vehicle Model",
+            "description": VehicleModel
         }
         const encryptedData = AesCipher.encrypt(JSON.stringify(payload));
 
         try {
             const response = await AddState({ encryptData: encryptedData })
-            console.log("handleAddState",response);
+            console.log("handleAddState", response);
             if (!response?.error) {
                 form.resetFields();
                 onCreate(value);
@@ -53,7 +53,7 @@ export const AddStateForm = ({ open, onCreate, onCancel }) => {
     return (
         <Modal
             open={open}
-            title="Add new state"
+            title="Add New Vehicle Model"
             okText="Create"
             cancelText="Cancel"
             onCancel={onCancel}
@@ -79,8 +79,8 @@ export const AddStateForm = ({ open, onCreate, onCancel }) => {
                         }}
                     >
                         <Form.Item
-                            label="Select Country"
-                            name="countryCode"
+                            label="Select Vehicle Make"
+                            name="makeCode"
                             rules={[
                                 {
                                     required: true,
@@ -98,12 +98,12 @@ export const AddStateForm = ({ open, onCreate, onCancel }) => {
                             </Select>
                         </Form.Item>
                         <Form.Item
-                            name="StateName"
-                            label="State Name"
+                            name="VehicleModel"
+                            label="Vehicle Model"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input the state name!',
+                                    message: 'Please input the Vehicle Model!',
                                 },
                             ]}
                         >

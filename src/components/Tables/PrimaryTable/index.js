@@ -83,8 +83,8 @@ const PrimaryTable = ({ data, columns, searchConfig }) => {
                     textToHighlight={text ? text.toString() : ''}
                 />
             ) : (
-                text
-            ),
+                text || 'N/A'
+            ), // If text is falsy (null, undefined, ''), display 'N/A'
     });
 
     return (
@@ -93,10 +93,15 @@ const PrimaryTable = ({ data, columns, searchConfig }) => {
                 ...col,
                 ...getColumnSearchProps(col.dataIndex),
             }))}
-            dataSource={data}
+            dataSource={data.map((record) => {
+                // Map through data to check and replace falsy values with 'N/A'
+                return Object.keys(record).reduce((acc, key) => {
+                    acc[key] = record[key] || 'N/A';
+                    return acc;
+                }, {});
+            })}
             scroll={{ x: 'max-content', y: 300 }}
             bordered
-            // pagination={{ pageSize: 5 }}
             {...searchConfig}
         />
     );

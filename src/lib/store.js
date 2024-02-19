@@ -5,11 +5,15 @@ import userInfoReducer from './slice/loginSlice';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; 
 import { masterSubChildDataApi } from './api/masterSubChildDataApi';
+import { addGeneralApi } from './api/addGeneralApi';
+import { claimMasterApi } from './api/claimMasterApi';
 
 const rootReducer = combineReducers({
   [loginApi.reducerPath]: loginApi.reducer,
   [ipApi.reducerPath]: ipApi.reducer,
   [masterSubChildDataApi.reducerPath]: masterSubChildDataApi.reducer,
+  [addGeneralApi.reducerPath]: addGeneralApi.reducer,
+  [claimMasterApi.reducerPath]: claimMasterApi.reducer,
   userInfo: userInfoReducer,
 });
 const persistConfig = {
@@ -27,6 +31,8 @@ export const store = configureStore({
       loginApi.middleware,
       ipApi.middleware,
       masterSubChildDataApi.middleware,
+      addGeneralApi.middleware,
+      claimMasterApi.middleware,
     ),
 });
 

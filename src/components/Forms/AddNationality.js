@@ -5,7 +5,7 @@ import { useGetMasterSubChildDataMutation } from '../../lib/api/masterSubChildDa
 import { AesCipher, IsEmpty } from '../../utility/handler';
 import { useAddStateMutation } from '../../lib/api/addGeneralApi';
 
-export const AddStateForm = ({ open, onCreate, onCancel }) => {
+export const AddNationality = ({ open, onCreate, onCancel }) => {
     const [FetchMasterSubChildData, MasterSubChildData] = useGetMasterSubChildDataMutation()
     const [AddState] = useAddStateMutation()
     const [form] = Form.useForm();
@@ -24,21 +24,21 @@ export const AddStateForm = ({ open, onCreate, onCancel }) => {
 
     }
     const handleAddState = async (value) => {
-        let { StateName, countryCode } = value
+        let { Nationality, countryCode } = value
         let payload = {
             "countryCode": countryCode,
             "stateCode": null,
             "bankCode": null,
             "makeCode": null,
             "id": null,
-            "serviceType": "State",
-            "description": StateName
+            "serviceType": "Nationality",
+            "description": Nationality
         }
         const encryptedData = AesCipher.encrypt(JSON.stringify(payload));
 
         try {
             const response = await AddState({ encryptData: encryptedData })
-            console.log("handleAddState",response);
+            console.log("handleAddState", response);
             if (!response?.error) {
                 form.resetFields();
                 onCreate(value);
@@ -53,7 +53,7 @@ export const AddStateForm = ({ open, onCreate, onCancel }) => {
     return (
         <Modal
             open={open}
-            title="Add new state"
+            title="Add New Nationality"
             okText="Create"
             cancelText="Cancel"
             onCancel={onCancel}
@@ -98,12 +98,12 @@ export const AddStateForm = ({ open, onCreate, onCancel }) => {
                             </Select>
                         </Form.Item>
                         <Form.Item
-                            name="StateName"
-                            label="State Name"
+                            name="Nationality"
+                            label="Nationality"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input the state name!',
+                                    message: 'Please input the Nationality!',
                                 },
                             ]}
                         >

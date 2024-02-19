@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 70vw;
+    overflow-x:scroll;
+}
+.AddButtonContainer{
+    position: absolute;
+    top: 18vh;
+    right: 5vw;
+    z-index: 10;
+}
+.TableContainer{
+    margin-top: 5vh;
+}

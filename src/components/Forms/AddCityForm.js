@@ -5,7 +5,7 @@ import { useGetMasterSubChildDataMutation } from '../../lib/api/masterSubChildDa
 import { AesCipher, IsEmpty } from '../../utility/handler';
 import { useAddStateMutation } from '../../lib/api/addGeneralApi';
 
-export const AddStateForm = ({ open, onCreate, onCancel }) => {
+export const AddCityForm = ({ open, onCreate, onCancel }) => {
     const [FetchMasterSubChildData, MasterSubChildData] = useGetMasterSubChildDataMutation()
     const [AddState] = useAddStateMutation()
     const [form] = Form.useForm();
@@ -20,19 +20,19 @@ export const AddStateForm = ({ open, onCreate, onCancel }) => {
             "value": ""
         }
         const encryptedData = AesCipher.encrypt(JSON.stringify(payload));
-        FetchMasterSubChildData({ encryptData: encryptedData, SessionType: "Country" })
+        FetchMasterSubChildData({ encryptData: encryptedData, SessionType: "State" })
 
     }
     const handleAddState = async (value) => {
-        let { StateName, countryCode } = value
+        let { CityName, StateCode } = value
         let payload = {
-            "countryCode": countryCode,
-            "stateCode": null,
+            "countryCode": null,
+            "stateCode": StateCode,
             "bankCode": null,
             "makeCode": null,
             "id": null,
-            "serviceType": "State",
-            "description": StateName
+            "serviceType": "City",
+            "description": CityName
         }
         const encryptedData = AesCipher.encrypt(JSON.stringify(payload));
 
@@ -53,7 +53,7 @@ export const AddStateForm = ({ open, onCreate, onCancel }) => {
     return (
         <Modal
             open={open}
-            title="Add new state"
+            title="Add new city"
             okText="Create"
             cancelText="Cancel"
             onCancel={onCancel}
@@ -79,8 +79,8 @@ export const AddStateForm = ({ open, onCreate, onCancel }) => {
                         }}
                     >
                         <Form.Item
-                            label="Select Country"
-                            name="countryCode"
+                            label="Select State"
+                            name="StateCode"
                             rules={[
                                 {
                                     required: true,
@@ -98,8 +98,8 @@ export const AddStateForm = ({ open, onCreate, onCancel }) => {
                             </Select>
                         </Form.Item>
                         <Form.Item
-                            name="StateName"
-                            label="State Name"
+                            name="CityName"
+                            label="City Name"
                             rules={[
                                 {
                                     required: true,
