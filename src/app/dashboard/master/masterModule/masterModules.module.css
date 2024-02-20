@@ -6,11 +6,28 @@
     overflow-x:scroll;
 }
 .CardContainer{
-    background: red;
+    background: rgb(234, 137, 137);
     margin: 1vh;
     padding-top: 10vh;
     padding-bottom: 10vh;
     border-radius: 10px;
-    width: 50vw;
+    width: 15vw;
+    height: 60vh;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex
+}
+.CardContainer :hover {
+    background: rgb(148, 191, 216);
+    margin: 1vh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    border-radius: 10px;
+    width: 15vw;
+    height: 60vh;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex
 }
